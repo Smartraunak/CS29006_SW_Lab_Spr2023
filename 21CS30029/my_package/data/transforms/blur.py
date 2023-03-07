@@ -11,9 +11,18 @@ class BlurImage(object):
             Arguments:
             radius (int): radius to blur
         '''
+        self.radius=radius
+        
   
 
     def __call__(self, image):
+        self.image=image
+        OriImage=Image.open(self.image)
+        OriImage.show()
+
+        gaussImage=OriImage.filter(ImageFilter.GaussianBlur(self.radius))
+        gaussImage.show()
+        gaussImage.save('my_package/data/images/gaussian_blur.jpg')
         '''
             Arguments:
             image (numpy array or PIL Image)
